@@ -47,8 +47,8 @@ videoRouter.post('/', (req: Request, res: Response) => {     //creating new vide
         author: author,
         canBeDownloaded: false,
         minAgeRestriction: null,
-        createdAt: dateNow.toISOString(),
-        publicationDate: addDays(dateNow, 1).toISOString(),
+        createdAt: dateNow.toString(),
+        publicationDate: addDays(dateNow, 1).toString(),
         availableResolutions: availableResolutions
     }
 

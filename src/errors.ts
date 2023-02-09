@@ -34,5 +34,3 @@ export function errors(title,author,availableResolutions) {
     }//error message for resolution
 return errors
 }
-
-console.log("sdfsfsf")

@@ -53,7 +53,7 @@ videoRouter.post('/', (req: Request, res: Response) => {     //creating new vide
     }
 
     videos.push(newVideo)
-    res.status(201).send(videos)
+    res.status(201).send(newVideo)
     return
 
 })  //creating new video

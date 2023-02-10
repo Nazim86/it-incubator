@@ -1,4 +1,4 @@
-export function errors(title,author,availableResolutions, canBeDownloaded = undefined, minAgeRestriction = undefined, publicationDate = undefined) {
+export function errors(title,author,availableResolutions, canBeDownloaded = undefined, minAgeRestriction = undefined, publicationDate = '') {
 
     const videoResolutions = ['P144', 'P240', 'P360', 'P480', 'P720', 'P1080', 'P1440', 'P2160']
 
@@ -48,8 +48,8 @@ export function errors(title,author,availableResolutions, canBeDownloaded = unde
             field: "minAgeRestriction"
         })
     }
-const newRegex = new RegExp("/\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+([+-][0-2]\\d:[0-5]\\d|Z)/\n")
-    if(publicationDate && (typeof publicationDate !== "string" || !newRegex.test(publicationDate))) {
+    let valid = /^(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))$/.test(publicationDate);
+    if(publicationDate && (typeof publicationDate !== "string" || !valid)) {
         errors.push({
             message: "Incorrect publicationDate",
             field: "publicationDate"

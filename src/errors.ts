@@ -1,6 +1,9 @@
 export function errors(title,author,availableResolutions, canBeDownloaded = undefined, minAgeRestriction = undefined, publicationDate = '') {
 
-    const videoResolutions = ['P144', 'P240', 'P360', 'P480', 'P720', 'P1080', 'P1440', 'P2160']
+    // const videoResolutions = ['P144', 'P240', 'P360', 'P480', 'P720', 'P1080', 'P1440', 'P2160']
+
+    enum videoResolutions {P144, P240, P360, P480, P720, P1080, P1440, P2160}
+
 
 
     type errorMessageType = {
@@ -26,7 +29,7 @@ export function errors(title,author,availableResolutions, canBeDownloaded = unde
     }  //error message for author
 
     for(let i=0; i < availableResolutions.length; i++) {
-        if(!(videoResolutions.includes(availableResolutions[i]))){
+        if(!(Object.values(videoResolutions).includes(availableResolutions[i]))){
             errors.push({
                 message: "Incorrect resolution",
                 field: "availableResolutions"

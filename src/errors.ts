@@ -25,12 +25,16 @@ export function errors(title,author,availableResolutions) {
         })
     }  //error message for author
 
-    if (!(availableResolutions in videoResolutions)) {
+    for(let i; i < availableResolutions.length; i++) {
+        if(!(availableResolutions[i] in videoResolutions)){
+            errors.push({
+                message: "Incorrect resolution",
+                field: "availableResolutions"
+            })
+            break
+        }
+    }
 
-        errors.push({
-            message: "Incorrect resolution",
-            field: "availableResolutions"
-        })
-    }//error message for resolution
+   //error message for resolution
 return errors
 }

@@ -51,8 +51,8 @@ export function errors(title,author,availableResolutions, canBeDownloaded = unde
 const newRegex = new RegExp("/\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+([+-][0-2]\\d:[0-5]\\d|Z)/\n")
     if(publicationDate && (typeof publicationDate !== "string" || !newRegex.test(publicationDate))) {
         errors.push({
-            message: "Incorrect minAgeRestriction",
-            field: "minAgeRestriction"
+            message: "Incorrect publicationDate",
+            field: "publicationDate"
         })
     }
 

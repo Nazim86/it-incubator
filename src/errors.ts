@@ -1,6 +1,6 @@
-export function errors(title,author,availableResolutions) {
+export function errors(title,author,availableResolutions, canBeDownloaded = undefined, minAgeRestriction = undefined) {
 
-    enum videoResolutions { P144, P240, P360, P480, P720, P1080, P1440, P2160 }
+    const videoResolutions = ['P144', 'P240', 'P360', 'P480', 'P720', 'P1080', 'P1440', 'P2160']
 
 
     type errorMessageType = {
@@ -25,14 +25,28 @@ export function errors(title,author,availableResolutions) {
         })
     }  //error message for author
 
-    for(let i; i < availableResolutions.length; i++) {
-        if(!(availableResolutions[i] in videoResolutions)){
+    for(let i=0; i < availableResolutions.length; i++) {
+        if(!(videoResolutions.includes(availableResolutions[i]))){
             errors.push({
                 message: "Incorrect resolution",
                 field: "availableResolutions"
             })
             break
         }
+    }
+
+    if(canBeDownloaded && typeof canBeDownloaded !== "boolean") {
+        errors.push({
+            message: "Incorrect canBeDownloaded",
+            field: "canBeDownloaded"
+        })
+    }
+
+    if(minAgeRestriction && (typeof minAgeRestriction !== "number" || minAgeRestriction<1 || minAgeRestriction>18)) {
+        errors.push({
+            message: "Incorrect minAgeRestriction",
+            field: "minAgeRestriction"
+        })
     }
 
    //error message for resolution

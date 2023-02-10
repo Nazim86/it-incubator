@@ -84,7 +84,7 @@ videoRouter.put('/:videoId', (req: Request, res: Response) => {
     const publicationDate = req.body.publicationDate
 
     // checking for errors
-    const errorMessage = errors(title,author,availableResolutions)
+    const errorMessage = errors(title,author,availableResolutions, canBeDownloaded, minAgeRestriction)
 
     if (errorMessage.length > 0) {
         res.status(400).send({errorsMessages: errorMessage})

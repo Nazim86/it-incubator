@@ -34,7 +34,7 @@ videoRouter.post('/', (req: Request, res: Response) => {     //creating new vide
     const errorMessage = errors(title,author,availableResolutions)
 
     if (errorMessage.length > 0) {
-        res.status(400).send({errorsMessages: errors})
+        res.status(400).send({errorsMessages: errorMessage})
         return
     }  // sending error messages to user
 
@@ -87,7 +87,7 @@ videoRouter.put('/:videoId', (req: Request, res: Response) => {
     const errorMessage = errors(title,author,availableResolutions)
 
     if (errorMessage.length > 0) {
-        res.status(400).send({errorsMessages: errors})
+        res.status(400).send({errorsMessages: errorMessage})
         return
     }  // sending error messages to user
 

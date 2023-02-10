@@ -10,14 +10,14 @@ export function errors(title,author,availableResolutions) {
 
     const errors: errorMessageType[] = []
 
-    if (typeof title != 'string' || title.length > 40) {
+    if (typeof title !== 'string' || title.length > 40) {
         errors.push({
             message: "Incorrect title",
             field: "title"
         })
     } //error message for title
 
-    if (typeof author != "string" || author.length > 20) {
+    if (typeof author !== "string" || author.length > 20) {
 
         errors.push({
             message: "Incorrect author",
